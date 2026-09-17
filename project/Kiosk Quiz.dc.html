@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/colors.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/typography.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/base.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/styles.css">
+<script src="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/_ds_bundle.js"></script>
+<style>
+html, body { margin: 0; padding: 0; background: #ECEFF2; overflow: hidden; }
+
+/* easeInOutQuart. Over a slide this long a pure ease-out starts at full speed,
+   which reads as a snap; easing in as well as out lets the screen gather pace
+   and settle instead of jumping. */
+:root { --ease-kiosk: cubic-bezier(0.76, 0, 0.24, 1); }
+
+/* Forward through the flow: the new screen slides in from the right while the
+   old one drifts left at a slower rate, so the two read as one stack moving.
+   The outgoing fade is held back to the second half so the screen is still
+   solid while it is the thing your eye is following. */
+@keyframes kioskPushIn  { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes kioskPushOut { 0% { transform: translateX(0); opacity: 1; } 45% { opacity: 0.94; } 100% { transform: translateX(-26%); opacity: 0.4; } }
+
+/* Backing out to attract: the finished screen slides off to the right and
+   uncovers the attract screen, which eases back up from its parked position. */
+@keyframes kioskPopIn   { 0% { transform: translateX(-26%); opacity: 0.4; } 55% { opacity: 0.94; } 100% { transform: translateX(0); opacity: 1; } }
+@keyframes kioskPopOut  { from { transform: translateX(0); } to { transform: translateX(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes kioskPushIn  { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes kioskPushOut { from { opacity: 1; } to { opacity: 0; } }
+  @keyframes kioskPopIn   { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes kioskPopOut  { from { opacity: 1; } to { opacity: 0; } }
+}
+</style>
+</helmet>
+<div style="position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #ECEFF2; overflow: hidden;">
+  <div ref="{{ stageRef }}" style="position: relative; flex: none; width: 1080px; height: 1920px; transform-origin: center center; overflow: hidden; background: #FFFFFF; box-shadow: 0 12px 32px rgba(13, 55, 89, 0.14);">
+
+    <sc-if value="{{ isSliding }}">
+      <div style="position: absolute; inset: 0; z-index: {{ outZ }}; pointer-events: none; will-change: transform, opacity; animation: {{ outAnim }};">
+        <dc-import name="Kiosk Screen" screen="{{ prevScreen }}" q-index="{{ prevQIndex }}" pressed="{{ prevPressed }}" chosen="{{ prevChosen }}" overlay="{{ prevOverlay }}" countdown="{{ prevCountdown }}" show-grid="{{ showGrid }}" hint-size="1080px,1920px"></dc-import>
+      </div>
+    </sc-if>
+
+    <div style="position: absolute; inset: 0; z-index: {{ inZ }}; pointer-events: {{ livePointer }}; will-change: transform, opacity; animation: {{ inAnim }};">
+      <dc-import name="Kiosk Screen" screen="{{ screen }}" q-index="{{ qIndex }}" pressed="{{ pressed }}" chosen="{{ chosen }}" overlay="{{ overlay }}" countdown="{{ countdown }}" show-grid="{{ showGrid }}" on-start="{{ onStart }}" on-answer="{{ onAnswer }}" on-done="{{ onDone }}" on-keep="{{ onKeep }}" hint-size="1080px,1920px"></dc-import>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;forceScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;attract&quot;,&quot;question&quot;,&quot;question pressed&quot;,&quot;win&quot;,&quot;lose&quot;,&quot;inactivity&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;idleSeconds&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:5,&quot;max&quot;:60,&quot;default&quot;:20,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;resultDelayMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:200,&quot;max&quot;:2000,&quot;step&quot;:100,&quot;default&quot;:700,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;transitionMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:1200,&quot;step&quot;:20,&quot;default&quot;:580,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;transitionDelayMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:600,&quot;step&quot;:20,&quot;default&quot;:100,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { screen: 'attract', qIndex: 0, pressed: -1, chosen: -1, overlay: 'none', countdown: 10, prev: null, dir: 1 };
+  stageRef = React.createRef();
+
+  // Where each screen sits in the flow, so a swap can tell whether it is moving
+  // forward (slide in from the right) or backing out to the start.
+  rank = { attract: 0, question: 1, win: 2, lose: 2 };
+
+  fit = () => {
+    const el = this.stageRef.current;
+    if (!el || !el.parentElement) return;
+    const p = el.parentElement;
+    const s = Math.min(p.clientWidth / 1080, p.clientHeight / 1920);
+    el.style.transform = 'scale(' + s + ')';
+  };
+
+  componentDidMount() {
+    this.fit();
+    window.addEventListener('resize', this.fit);
+    this.ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(this.fit) : null;
+    if (this.ro && this.stageRef.current && this.stageRef.current.parentElement) this.ro.observe(this.stageRef.current.parentElement);
+  }
+
+  componentDidUpdate() { this.fit(); }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.fit);
+    if (this.ro) this.ro.disconnect();
+    this.clearTimers();
+    clearTimeout(this.slideT);
+  }
+
+  clearTimers() {
+    [this.idleT, this.resultT, this.autoT, this.overlayT].forEach(t => clearTimeout(t));
+    clearInterval(this.tickT);
+    this.idleT = this.resultT = this.autoT = this.tickT = this.overlayT = null;
+  }
+
+  slideMs() {
+    const v = Number(this.props.transitionMs);
+    return Number.isFinite(v) && v >= 0 ? v : 580;
+  }
+
+  // A beat before the slide starts. The outgoing screen holds still long enough
+  // to register the tap that caused it, so the motion reads as a response
+  // rather than something that was already underway.
+  slideDelayMs() {
+    const v = Number(this.props.transitionDelayMs);
+    return Number.isFinite(v) && v >= 0 ? v : 100;
+  }
+
+  // Swap screens with a slide. The outgoing screen stays mounted from a frozen
+  // snapshot of the state it was last rendered with, so it can animate away
+  // while the incoming screen moves in over (or out from under) it.
+  goTo(next) {
+    const s = this.state;
+    const ms = this.slideMs();
+    const lead = this.slideDelayMs();
+    if (ms <= 0) { this.setState(Object.assign({ prev: null }, next)); return; }
+    const dir = (this.rank[next.screen] || 0) >= (this.rank[s.screen] || 0) ? 1 : -1;
+    clearTimeout(this.slideT);
+    this.setState(Object.assign({
+      dir,
+      prev: { screen: s.screen, qIndex: s.qIndex, pressed: s.pressed, chosen: s.chosen, overlay: s.overlay, countdown: s.countdown }
+    }, next));
+    // Small buffer so the snapshot is never unmounted mid-animation.
+    this.slideT = setTimeout(() => this.setState({ prev: null }), lead + ms + 40);
+  }
+
+  armIdle() {
+    clearTimeout(this.idleT);
+    const secs = Math.max(3, Number(this.props.idleSeconds) || 20);
+    this.idleT = setTimeout(() => this.showIdle(), secs * 1000);
+  }
+
+  showIdle() {
+    clearTimeout(this.overlayT);
+    this.setState({ overlay: 'inactivity', countdown: 10 });
+    clearInterval(this.tickT);
+    this.tickT = setInterval(() => {
+      this.setState(s => {
+        if (s.countdown <= 1) { this.reset(); return { countdown: 0 }; }
+        return { countdown: s.countdown - 1 };
+      });
+    }, 1000);
+  }
+
+  reset = () => {
+    this.clearTimers();
+    this.goTo({ screen: 'attract', pressed: -1, chosen: -1, overlay: 'none', countdown: 10 });
+  };
+
+  onStart = () => {
+    this.clearTimers();
+    this.goTo({ screen: 'question', qIndex: Math.floor(Math.random() * 12), pressed: -1, chosen: -1, overlay: 'none' });
+    this.armIdle();
+  };
+
+  onAnswer = (i, isCorrect) => {
+    if (this.state.pressed >= 0 || this.state.prev) return;
+    this.clearTimers();
+    // No slide here — the press state belongs to the question screen and should
+    // register instantly under the finger.
+    this.setState({ pressed: i, chosen: i });
+    const delay = Math.max(150, Number(this.props.resultDelayMs) || 700);
+    this.resultT = setTimeout(() => {
+      this.goTo({ screen: isCorrect ? 'win' : 'lose' });
+      this.autoT = setTimeout(this.reset, 60000);
+    }, delay);
+  };
+
+  // The overlay is not a screen swap, so it gets its own fade out before the
+  // question underneath becomes live again.
+  onKeep = () => {
+    clearInterval(this.tickT);
+    clearTimeout(this.overlayT);
+    this.setState({ overlay: 'leaving' });
+    this.overlayT = setTimeout(() => this.setState({ overlay: 'none', countdown: 10 }), 300);
+    this.armIdle();
+  };
+
+  renderVals() {
+    const force = this.props.forceScreen || 'auto';
+    const s = this.state;
+    let screen = s.screen, pressed = s.pressed, chosen = s.chosen, overlay = s.overlay, countdown = s.countdown;
+    let prev = s.prev;
+    if (force !== 'auto') {
+      prev = null;
+      overlay = 'none';
+      if (force === 'attract') { screen = 'attract'; pressed = -1; }
+      else if (force === 'question') { screen = 'question'; pressed = -1; }
+      else if (force === 'question pressed') { screen = 'question'; pressed = 2; }
+      else if (force === 'win') { screen = 'win'; chosen = -1; }
+      else if (force === 'lose') { screen = 'lose'; chosen = -1; }
+      else if (force === 'inactivity') { screen = 'question'; pressed = -1; overlay = 'inactivity'; countdown = 8; }
+    }
+    const sliding = !!prev;
+    const fwd = s.dir >= 0;
+    const ms = this.slideMs();
+    // animation: <name> <duration> <timing-function> <delay> <fill-mode>
+    const ease = ' ' + ms + 'ms var(--ease-kiosk) ' + this.slideDelayMs() + 'ms both';
+    return {
+      stageRef: this.stageRef,
+      screen, pressed, chosen, overlay, countdown,
+      qIndex: s.qIndex,
+      showGrid: this.props.showGrid === true,
+      isSliding: sliding,
+      inAnim: sliding ? (fwd ? 'kioskPushIn' : 'kioskPopIn') + ease : 'none',
+      outAnim: sliding ? (fwd ? 'kioskPushOut' : 'kioskPopOut') + ease : 'none',
+      // Going forward the new screen covers the old one; backing out, the old
+      // screen rides on top and slides away to reveal what is underneath.
+      inZ: fwd ? 2 : 1,
+      outZ: fwd ? 1 : 2,
+      // Nothing is tappable mid-slide, so a stray touch cannot hit a moving target.
+      livePointer: sliding ? 'none' : 'auto',
+      prevScreen: prev ? prev.screen : 'attract',
+      prevQIndex: prev ? prev.qIndex : 0,
+      prevPressed: prev ? prev.pressed : -1,
+      prevChosen: prev ? prev.chosen : -1,
+      prevOverlay: prev ? prev.overlay : 'none',
+      prevCountdown: prev ? prev.countdown : 10,
+      onStart: this.onStart,
+      onAnswer: this.onAnswer,
+      onDone: this.reset,
+      onKeep: this.onKeep
+    };
+  }
+}
+
+</script>
+</body>
+</html>

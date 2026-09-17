@@ -1,0 +1,16 @@
+/* Sunrise Credit Union — minimal base styles */
+body {
+  font-family: var(--font-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--text-heading);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-display-b);
+}

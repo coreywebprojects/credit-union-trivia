@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/colors.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/typography.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/base.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/styles.css">
+<script src="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/_ds_bundle.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.9.28/+esm"></script>
+<style>
+@keyframes kioskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+@keyframes kioskHalo { 0% { transform: scale(1); opacity: 0.55; } 70%,100% { transform: scale(1.06); opacity: 0; } }
+@keyframes kioskPop { 0% { transform: scale(0.72); opacity: 0; } 62% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes kioskRise { 0% { transform: translateY(28px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+@keyframes kioskFall { 0% { transform: translateY(-260px) rotate(0deg); opacity: 0; } 8% { opacity: 1; } 100% { transform: translateY(1980px) rotate(420deg); opacity: 1; } }
+@keyframes kioskTick { 0% { transform: scale(1.14); } 40%,100% { transform: scale(1); } }
+:root { --ease-kiosk: cubic-bezier(0.76, 0, 0.24, 1); }
+@keyframes kioskScrimIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes kioskScrimOut { 0% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes kioskCardOut { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(0.94); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  @keyframes kioskCardOut { 0% { opacity: 1; } 100% { opacity: 0; } }
+}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1920px; position: relative; overflow: hidden; background: #FFFFFF; font-family: var(--font-body); letter-spacing: var(--tracking-body); user-select: none; -webkit-tap-highlight-color: transparent;">
+
+  <sc-if value="{{ isAttract }}" hint-placeholder-val="{{ true }}">
+    <div style="position: absolute; inset: 0; background: var(--gradient-brand);"></div>
+    <div onClick="{{ onStart }}" style="position: absolute; inset: 0;">
+      <img src="assets/sunrise-logo.png" alt="Sunrise Credit Union" style="position: absolute; top: 108px; left: 50%; transform: translateX(-50%); height: 164px; width: auto; display: block;">
+      <dotlottie-wc src="assets/money-stack.lottie" autoplay loop style="position: absolute; top: 656px; left: 50%; transform: translateX(-50%); width: 583px; height: 460px; display: block; pointer-events: none;"></dotlottie-wc>
+      <h1 style="position: absolute; top: 348px; left: 60px; width: 960px; margin: 0; font-family: var(--font-display); font-size: 149px; font-weight: 800; line-height: 1.02; letter-spacing: var(--tracking-display); color: var(--color-navy); text-align: center; text-wrap: pretty;">Credit&nbsp;Union Trivia</h1>
+      <div style="position: absolute; top: 1118px; left: 60px; width: 960px; text-align: center; font-size: 42px; font-weight: 600; color: var(--color-navy);">Answer correctly and win a prize!</div>
+      <div style="position: absolute; top: 1200px; left: 90px; width: 900px; height: 200px;">
+        <div style="position: absolute; inset: 0; border-radius: 999px; background: var(--color-navy); animation: kioskHalo 1900ms var(--ease-out) infinite;"></div>
+        <button style="position: absolute; inset: 0; width: 100%; height: 100%; border: none; border-radius: 999px; background: var(--color-navy); color: #FFFFFF; font-family: var(--font-display); font-size: 64px; font-weight: 700; letter-spacing: var(--tracking-display); animation: kioskPulse 1900ms var(--ease-out) infinite; cursor: pointer;" style-active="background: #072338; animation: none;">Tap to play</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isQuestion }}">
+    <div style="position: absolute; inset: 0; background: var(--surface-page);"></div>
+    <img src="assets/sunrise-logo.png" alt="Sunrise Credit Union" style="position: absolute; top: 80px; left: 60px; height: 76px; width: auto; display: block;">
+    <div style="position: absolute; top: 104px; right: 60px; white-space: nowrap; font-family: var(--font-accent); font-size: 28px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-700);">Credit union quiz</div>
+    <div style="position: absolute; top: 200px; left: 60px; width: 960px; height: 10px; border-radius: 999px; background: var(--gradient-brand);"></div>
+    <div style="position: absolute; top: 250px; left: 60px; width: 960px; height: 480px; display: flex; align-items: center;">
+      <h2 style="width: 960px; margin: 0; font-family: var(--font-display); font-size: 56px; font-weight: 700; line-height: 1.18; letter-spacing: var(--tracking-display); color: var(--color-navy); text-wrap: pretty;">{{ question }}</h2>
+    </div>
+    <div style="position: absolute; top: 790px; left: 60px; width: 960px; text-align: center; font-size: 26px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy-700);">Tap your answer</div>
+    <div style="position: absolute; top: 880px; left: 60px; width: 960px; display: flex; flex-direction: column; gap: 24px;">
+      <sc-for list="{{ answers }}" as="ans" hint-placeholder-count="4">
+        <sc-if value="{{ ans.isDefault }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ ans.onTap }}" style="display: flex; align-items: center; gap: 28px; width: 960px; height: 140px; padding: 0 40px; box-sizing: border-box; border: 4px solid var(--color-navy); border-radius: 24px; background: var(--color-cream); text-align: left; cursor: pointer; font-family: var(--font-body);" style-active="background: var(--color-navy); border-color: var(--color-navy);">
+            <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 999px; background: var(--color-navy); color: #FFFFFF; font-family: var(--font-display); font-size: 38px; font-weight: 700;">{{ ans.letter }}</span>
+            <span style="flex: 1; min-width: 0; font-size: 40px; font-weight: 600; line-height: 1.15; color: var(--color-navy); letter-spacing: var(--tracking-body); text-wrap: pretty;">{{ ans.text }}</span>
+          </button>
+        </sc-if>
+        <sc-if value="{{ ans.isPressed }}">
+          <div style="display: flex; align-items: center; gap: 28px; width: 960px; height: 140px; padding: 0 40px; box-sizing: border-box; border: 4px solid var(--color-navy); border-radius: 24px; background: var(--color-navy); transform: scale(0.985);">
+            <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 999px; background: #FFFFFF; color: var(--color-navy); font-family: var(--font-display); font-size: 38px; font-weight: 700;">{{ ans.letter }}</span>
+            <span style="flex: 1; min-width: 0; font-size: 40px; font-weight: 700; line-height: 1.15; color: #FFFFFF; letter-spacing: var(--tracking-body); text-wrap: pretty;">{{ ans.text }}</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ ans.isDim }}">
+          <div style="display: flex; align-items: center; gap: 28px; width: 960px; height: 140px; padding: 0 40px; box-sizing: border-box; border: 4px solid var(--navy-200); border-radius: 24px; background: var(--navy-25);">
+            <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 999px; background: var(--navy-200); color: #FFFFFF; font-family: var(--font-display); font-size: 38px; font-weight: 700;">{{ ans.letter }}</span>
+            <span style="flex: 1; min-width: 0; font-size: 40px; font-weight: 600; line-height: 1.15; color: var(--navy-500); letter-spacing: var(--tracking-body); text-wrap: pretty;">{{ ans.text }}</span>
+          </div>
+        </sc-if>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isWin }}">
+    <div style="position: absolute; inset: 0; background: var(--gradient-brand);"></div>
+    <div style="position: absolute; inset: 0; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 40px; width: 28px; height: 44px; background: var(--color-navy); animation: kioskFall 2600ms linear 0ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 150px; width: 22px; height: 22px; border-radius: 999px; background: #FFFFFF; animation: kioskFall 3100ms linear 420ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 245px; width: 32px; height: 18px; background: var(--color-cream); animation: kioskFall 2400ms linear 900ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 330px; width: 26px; height: 40px; background: var(--color-navy); animation: kioskFall 3400ms linear 260ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 430px; width: 20px; height: 20px; border-radius: 999px; background: var(--color-cream); animation: kioskFall 2800ms linear 1400ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 520px; width: 34px; height: 16px; background: #FFFFFF; animation: kioskFall 3000ms linear 700ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 615px; width: 24px; height: 44px; background: var(--color-navy); animation: kioskFall 2500ms linear 1800ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 700px; width: 22px; height: 22px; border-radius: 999px; background: #FFFFFF; animation: kioskFall 3300ms linear 160ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 790px; width: 30px; height: 18px; background: var(--color-cream); animation: kioskFall 2700ms linear 1100ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 880px; width: 26px; height: 42px; background: var(--color-navy); animation: kioskFall 3200ms linear 2100ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 960px; width: 20px; height: 20px; border-radius: 999px; background: var(--color-cream); animation: kioskFall 2900ms linear 560ms infinite;"></div>
+      <div style="position: absolute; top: 0; left: 1030px; width: 28px; height: 16px; background: #FFFFFF; animation: kioskFall 2550ms linear 1650ms infinite;"></div>
+    </div>
+    <div style="position: absolute; top: 90px; left: 60px; display: flex; align-items: center; gap: 24px; height: 92px; padding: 0 44px; border-radius: 999px; background: #FFFFFF; animation: kioskPop 420ms var(--ease-out) both;">
+      <x-import component-from-global-scope="SunriseCreditUnionDesignSystem_2a2795.Icon" name="check" size="52" stroke-width="4" color="#2E7D4F" hint-size="52px,52px"></x-import>
+      <span style="white-space: nowrap; font-family: var(--font-accent); font-size: 40px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-navy);">Correct</span>
+    </div>
+    <h1 style="position: absolute; top: 196px; left: 60px; width: 960px; margin: 0; font-family: var(--font-display); font-size: 184px; font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; color: var(--color-navy); animation: kioskPop 520ms var(--ease-out) 90ms both;">You win!</h1>
+    <div style="position: absolute; top: 588px; left: 60px; width: 960px; box-sizing: border-box; padding: 36px 44px 40px; border-radius: 24px; background: #FFFFFF; animation: kioskRise 420ms var(--ease-out) 420ms both;">
+      <div style="font-family: var(--font-accent); font-size: 28px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-700);">The answer</div>
+      <div style="margin-top: 12px; font-family: var(--font-display); font-size: 44px; font-weight: 700; line-height: 1.18; letter-spacing: var(--tracking-display); color: var(--color-navy); text-wrap: pretty;">{{ correctText }}</div>
+      <div style="margin-top: 16px; font-size: 36px; font-weight: 400; line-height: 1.35; color: var(--navy-800); text-wrap: pretty;">{{ why }}</div>
+    </div>
+    <button onClick="{{ onDone }}" style="position: absolute; top: 1280px; left: 60px; width: 960px; height: 140px; border: none; border-radius: 999px; background: var(--color-navy); color: #FFFFFF; font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display); cursor: pointer;" style-active="background: #072338;">Done</button>
+  </sc-if>
+
+  <sc-if value="{{ isLose }}">
+    <div style="position: absolute; inset: 0; background: var(--surface-cream);"></div>
+    <div style="position: absolute; top: 90px; left: 60px; display: flex; align-items: center; gap: 24px; height: 92px; padding: 0 40px; box-sizing: border-box; border: 4px solid var(--status-error); border-radius: 999px; background: #FFFFFF;">
+      <x-import component-from-global-scope="SunriseCreditUnionDesignSystem_2a2795.Icon" name="x" size="52" stroke-width="4" color="#C23A2B" hint-size="52px,52px"></x-import>
+      <span style="white-space: nowrap; font-family: var(--font-accent); font-size: 40px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-navy);">Not quite</span>
+    </div>
+    <h1 style="position: absolute; top: 196px; left: 60px; width: 960px; margin: 0; font-family: var(--font-display); font-size: 184px; font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; color: var(--color-navy); animation: kioskPop 480ms var(--ease-out) both;">So close!</h1>
+    <div style="position: absolute; top: 424px; left: 60px; width: 960px; display: flex; align-items: flex-start; gap: 20px;">
+      <x-import component-from-global-scope="SunriseCreditUnionDesignSystem_2a2795.Icon" name="x" size="40" stroke-width="4" color="#C23A2B" hint-size="40px,40px"></x-import>
+      <span style="flex: 1; min-width: 0; font-size: 36px; font-weight: 500; line-height: 1.25; color: var(--navy-800); text-wrap: pretty;">You picked “{{ chosenText }}”</span>
+    </div>
+    <div style="position: absolute; top: 528px; left: 60px; width: 960px; box-sizing: border-box; padding: 36px 44px 40px; border-radius: 24px; background: #FFFFFF; border-left: 16px solid var(--status-success); animation: kioskRise 420ms var(--ease-out) 180ms both;">
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <x-import component-from-global-scope="SunriseCreditUnionDesignSystem_2a2795.Icon" name="check" size="44" stroke-width="4" color="#2E7D4F" hint-size="44px,44px"></x-import>
+        <span style="font-family: var(--font-accent); font-size: 28px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-700);">The answer</span>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-display); font-size: 48px; font-weight: 700; line-height: 1.18; letter-spacing: var(--tracking-display); color: var(--color-navy); text-wrap: pretty;">{{ correctText }}</div>
+      <div style="margin-top: 16px; font-size: 36px; font-weight: 400; line-height: 1.35; color: var(--navy-800); text-wrap: pretty;">{{ why }}</div>
+    </div>
+    <button onClick="{{ onDone }}" style="position: absolute; top: 1280px; left: 60px; width: 960px; height: 140px; border: 4px solid var(--color-navy); border-radius: 999px; background: transparent; color: var(--color-navy); font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display); cursor: pointer;" style-active="background: var(--color-navy); color: #FFFFFF;">Done</button>
+  </sc-if>
+
+  <sc-if value="{{ showGrid }}">
+    <div style="position: absolute; inset: 0; pointer-events: none;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 850px; background: rgba(13, 55, 89, 0.14); border-bottom: 4px dashed #0D3759;"></div>
+      <div style="position: absolute; top: 850px; left: 0; right: 0; height: 900px; background: rgba(246, 98, 1, 0.14); border-bottom: 4px dashed #F66201;"></div>
+      <div style="position: absolute; top: 1750px; left: 0; right: 0; height: 170px; background: rgba(13, 55, 89, 0.28);"></div>
+      <div style="position: absolute; top: 0; bottom: 0; left: 60px; width: 2px; background: rgba(13, 55, 89, 0.55);"></div>
+      <div style="position: absolute; top: 0; bottom: 0; right: 60px; width: 2px; background: rgba(13, 55, 89, 0.55);"></div>
+      <div style="position: absolute; top: 760px; left: 76px; font-family: var(--font-accent); font-size: 30px; font-weight: 800; color: var(--color-navy);">TOP ZONE 0–850 · 130–195 cm · nothing tappable</div>
+      <div style="position: absolute; top: 1698px; left: 76px; font-family: var(--font-accent); font-size: 30px; font-weight: 800; color: var(--color-navy);">INTERACTION ZONE 850–1750 · 65–130 cm</div>
+      <div style="position: absolute; top: 1830px; left: 76px; font-family: var(--font-accent); font-size: 30px; font-weight: 800; color: #FFFFFF;">BOTTOM ZONE 1750–1920 · keep empty</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showOverlay }}">
+    <div style="position: absolute; inset: 0; background: rgba(13, 55, 89, 0.93); animation: {{ scrimAnim }};">
+      <div style="position: absolute; top: 500px; left: 60px; width: 960px; box-sizing: border-box; padding: 64px; border-radius: 32px; background: #FFFFFF; animation: {{ cardAnim }};">
+        <h2 style="margin: 0; font-family: var(--font-display); font-size: 112px; font-weight: 800; line-height: 1; letter-spacing: var(--tracking-display); color: var(--color-navy);">Still there?</h2>
+        <div style="margin-top: 40px; display: flex; align-items: center; gap: 32px;">
+          <div style="flex: none; display: flex; align-items: center; justify-content: center; width: 168px; height: 168px; border-radius: 999px; background: var(--color-cream); border: 6px solid var(--color-orange); font-family: var(--font-display); font-size: 96px; font-weight: 800; color: var(--color-navy); animation: kioskTick 1000ms var(--ease-out) infinite;">{{ countdown }}</div>
+          <div style="flex: 1; min-width: 0; font-size: 36px; font-weight: 500; line-height: 1.3; color: var(--navy-800); text-wrap: pretty;">Starting over for the next person in {{ countdown }} seconds.</div>
+        </div>
+        <button onClick="{{ onKeep }}" style="margin-top: 48px; width: 832px; height: 140px; border: none; border-radius: 999px; background: var(--gradient-brand); color: var(--color-navy); font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display); cursor: pointer;" style-active="background: var(--accent-strong); color: #FFFFFF;">Keep playing</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1080,&quot;height&quot;:1920},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;attract&quot;,&quot;question&quot;,&quot;win&quot;,&quot;lose&quot;],&quot;default&quot;:&quot;attract&quot;,&quot;tsType&quot;:&quot;'attract'|'question'|'win'|'lose'&quot;,&quot;section&quot;:&quot;State&quot;},&quot;qIndex&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:11,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;pressed&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;default&quot;:-1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;chosen&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;default&quot;:-1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;overlay&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;none&quot;,&quot;inactivity&quot;],&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;'none'|'inactivity'&quot;,&quot;section&quot;:&quot;State&quot;},&quot;countdown&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:30,&quot;default&quot;:8,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Spec&quot;},&quot;onStart&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onAnswer&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(index: number) =&gt; void&quot;},&quot;onDone&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onKeep&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  pool = [
+    { q: 'Who owns a credit union?', a: ['Its members', 'Outside shareholders', 'The federal government', 'The Bank of Canada'], c: 0, why: 'Every member is a part owner of the credit union.' },
+    { q: 'What does "one member, one vote" mean at a credit union?', a: ['Every member gets an equal say', 'Only the board can vote', 'Bigger deposits get more votes', 'Members vote once in their lifetime'], c: 0, why: 'No matter how much money you have, your vote counts the same.' },
+    { q: 'What does TFSA stand for?', a: ['Tax-Free Savings Account', 'Total Fund Savings Account', 'Tax-Funded Student Account', 'Term Fixed Savings Agreement'], c: 0, why: 'Money grows in a TFSA without being taxed.' },
+    { q: 'What is compound interest?', a: ['Interest earned on your savings plus past interest', 'A fee for opening an account', 'Interest charged only on loans', 'A fixed yearly bonus'], c: 0, why: 'Your interest starts earning interest too, so savings grow faster over time.' },
+    { q: 'Which habit helps build a strong credit score?', a: ['Paying bills on time', 'Checking your balance daily', 'Closing all your accounts', 'Only using cash'], c: 0, why: 'Payment history is one of the biggest factors in your credit score.' },
+    { q: 'How much should an emergency fund typically cover?', a: ['3 to 6 months of expenses', '1 week of expenses', "One month's rent only", 'Nothing, credit cards are enough'], c: 0, why: 'A cushion of a few months helps you handle surprises without debt.' },
+    { q: 'What happens if you only pay the minimum on your credit card?', a: ['You pay interest on the remaining balance', 'Your balance is cleared', 'Your credit limit goes up', 'Nothing changes'], c: 0, why: 'Unpaid balances build interest, which can get expensive fast.' },
+    { q: 'What does APR stand for?', a: ['Annual Percentage Rate', 'Average Payment Required', 'Account Payment Record', 'Annual Profit Return'], c: 0, why: 'APR shows the yearly cost of borrowing money.' },
+    { q: "What's the main difference between a debit card and a credit card?", a: ['Debit uses money already in your account', 'Credit cards never charge interest', 'Debit cards build credit faster', 'There is no difference'], c: 0, why: "Credit cards let you borrow money you'll need to pay back." },
+    { q: 'Which of these is a common sign of a phishing scam?', a: ['An urgent message asking you to confirm your password', 'A monthly statement in your banking app', 'A receipt after a purchase', 'A branch reminding you of its holiday hours'], c: 0, why: 'Your financial institution will never ask for your password by text or email.' },
+    { q: 'What is a budget?', a: ["A plan for how you'll spend and save your money", 'A type of savings account', 'A loan for students', 'A credit score report'], c: 0, why: 'A budget helps you see where your money goes and plan ahead.' },
+    { q: "Where do a credit union's profits usually go?", a: ['Back to members through better rates, dividends, and community support', 'To outside investors', 'To the federal government', 'Into executive bonuses only'], c: 0, why: 'Credit unions are owned by members, so profits benefit members and their communities.' }
+  ];
+
+  // Answer order is shuffled per question index so the correct answer is not always A.
+  shuffled(qi) {
+    const item = this.pool[qi];
+    const orders = [
+      [1, 0, 2, 3], [0, 1, 2, 3], [2, 1, 0, 3], [1, 2, 3, 0], [3, 1, 2, 0], [0, 2, 1, 3],
+      [2, 0, 3, 1], [1, 3, 0, 2], [0, 3, 2, 1], [3, 0, 1, 2], [1, 0, 3, 2], [2, 3, 1, 0]
+    ];
+    const order = orders[qi % orders.length];
+    return { q: item.q, why: item.why, a: order.map(i => item.a[i]), c: order.indexOf(item.c) };
+  }
+
+  renderVals() {
+    const p = this.props;
+    const screen = p.screen || 'attract';
+    const qi = Math.max(0, Math.min(11, Number(p.qIndex) || 0));
+    const item = this.shuffled(qi);
+    const pressed = p.pressed === undefined || p.pressed === null ? -1 : Number(p.pressed);
+    const chosen = p.chosen === undefined || p.chosen === null ? -1 : Number(p.chosen);
+    const noop = () => {};
+    const overlayLeaving = p.overlay === 'leaving';
+    const answers = item.a.map((text, i) => ({
+      text,
+      letter: 'ABCD'[i],
+      isDefault: pressed < 0,
+      isPressed: pressed >= 0 && i === pressed,
+      isDim: pressed >= 0 && i !== pressed,
+      onTap: () => (p.onAnswer || noop)(i, i === item.c)
+    }));
+    return {
+      isAttract: screen === 'attract',
+      isQuestion: screen === 'question',
+      isWin: screen === 'win',
+      isLose: screen === 'lose',
+      showOverlay: p.overlay === 'inactivity' || overlayLeaving,
+      scrimAnim: overlayLeaving ? 'kioskScrimOut 260ms var(--ease-kiosk) both' : 'kioskScrimIn 300ms var(--ease-kiosk) both',
+      cardAnim: overlayLeaving ? 'kioskCardOut 240ms var(--ease-out) both' : 'kioskPop 300ms var(--ease-out) both',
+      showGrid: p.showGrid === true || p.showGrid === 'true',
+      question: item.q,
+      why: item.why,
+      correctText: item.a[item.c],
+      chosenText: chosen >= 0 ? item.a[chosen] : item.a[(item.c + 1) % 4],
+      answers,
+      countdown: p.countdown === undefined || p.countdown === null ? 8 : Number(p.countdown),
+      onStart: p.onStart || noop,
+      onDone: p.onDone || noop,
+      onKeep: p.onKeep || noop
+    };
+  }
+}
+
+</script>
+</body>
+</html>

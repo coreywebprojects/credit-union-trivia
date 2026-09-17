@@ -1,0 +1,39 @@
+/* ============================================================
+   Sunrise Credit Union — Typography tokens
+   Source: Brand Standards, September 2025 (pp. 13–14)
+   Display: Bricolage Grotesque (Medium/SemiBold/Bold/ExtraBold), ls -2%
+   Body:    Inter (Regular/Medium/SemiBold/Bold), ls -1.2%
+   Accent:  Poppins (Regular/Bold/Heavy→800), ls 0%
+   ============================================================ */
+
+:root {
+  --font-display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-accent:  'Poppins', 'Inter', system-ui, sans-serif;
+
+  /* Letter-spacing from brand standards */
+  --tracking-display: -0.02em;   /* -2% */
+  --tracking-body:    -0.012em;  /* -1.2% */
+  --tracking-accent:  0;
+
+  /* Weights in use */
+  --weight-display-md: 500;
+  --weight-display-sb: 600;
+  --weight-display-b:  700;
+  --weight-display-xb: 800;
+
+  /* Type scale (derived — brand PDF defines faces, not sizes) */
+  --text-xs:   0.75rem;   /* 12 */
+  --text-sm:   0.875rem;  /* 14 */
+  --text-base: 1rem;      /* 16 */
+  --text-lg:   1.125rem;  /* 18 */
+  --text-xl:   1.375rem;  /* 22 */
+  --text-2xl:  1.75rem;   /* 28 */
+  --text-3xl:  2.25rem;   /* 36 */
+  --text-4xl:  3rem;      /* 48 */
+  --text-5xl:  4rem;      /* 64 */
+
+  --leading-tight: 1.1;
+  --leading-snug:  1.25;
+  --leading-body:  1.55;
+}

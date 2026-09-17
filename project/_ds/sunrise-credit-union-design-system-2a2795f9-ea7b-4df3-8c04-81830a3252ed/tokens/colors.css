@@ -1,0 +1,63 @@
+/* ============================================================
+   Sunrise Credit Union — Colour tokens
+   Source: Brand Standards, September 2025 (pp. 10–12)
+   Base palette values are verbatim from the PDF.
+   Tints/shades marked "derived" are programmatic mixes for UI
+   use only — not official brand colours.
+   ============================================================ */
+
+:root {
+  /* ---- Primary colours (PDF p.10) ---- */
+  --color-navy:   #0D3759; /* PMS 7463 — wordmark, headings */
+  --color-yellow: #ECDA55; /* PMS 128  — logomark sun */
+  --color-orange: #F66201; /* PMS 165  — accent / energy */
+
+  /* ---- Secondary colours (PDF p.11) ---- */
+  --color-cream:  #FFF9E2; /* PMS 7401-c — soft warm surface */
+  --color-gold:   #FEBF10; /* PMS 1235-c */
+  --color-amber:  #E97B32; /* PMS bright-orange-c */
+
+  /* ---- Brand gradient (PDF p.12) — "Sunrise Gold → Ignite Orange" ---- */
+  --gradient-stop-0:  #F8D344; /* Sunrise Gold */
+  --gradient-stop-1:  #FF8000; /* Ignite Orange */
+  --gradient-angle:   102deg; /* @kind other */
+  --gradient-brand:   linear-gradient(102deg, #F8D344 0%, #FF8000 100%); /* @kind color */
+
+  /* ---- Derived navy tint ramp (navy mixed with white; derived) ---- */
+  --navy-900: #0D3759;
+  --navy-800: #254B6A; /* body-text weight */
+  --navy-700: #315572;
+  --navy-500: #56738B;
+  --navy-300: #869BAC;
+  --navy-200: #B7C3CD;
+  --navy-100: #DBE1E6;
+  --navy-50:  #ECEFF2;
+  --navy-25:  #F5F7F8;
+
+  /* ---- Semantic aliases ---- */
+  --text-heading:     var(--color-navy);
+  --text-body:        var(--navy-800);
+  --text-muted:       var(--navy-500);
+  --text-on-dark:     #FFFFFF;
+  --text-on-gradient: var(--color-navy);
+
+  --surface-page:   #FFFFFF;
+  --surface-cream:  var(--color-cream);
+  --surface-card:   #FFFFFF;
+  --surface-navy:   var(--color-navy);
+  --surface-subtle: var(--navy-25);
+
+  --accent:          var(--color-orange);
+  --accent-strong:   #D95601; /* derived: pressed orange */
+  --accent-soft:     #FEEFE2; /* derived: orange tint surface */
+
+  --border-subtle:  var(--navy-100);
+  --border-strong:  var(--navy-200);
+  --focus-ring:     rgba(246, 98, 1, 0.45);
+
+  /* ---- Status (derived — no official semantic palette in brand PDF) ---- */
+  --status-success: #2E7D4F;
+  --status-warning: var(--color-gold);
+  --status-error:   #C23A2B;
+  --status-info:    var(--navy-700);
+}

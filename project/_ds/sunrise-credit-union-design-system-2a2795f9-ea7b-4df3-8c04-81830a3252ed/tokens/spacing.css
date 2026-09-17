@@ -1,0 +1,37 @@
+/* ============================================================
+   Sunrise Credit Union — Spacing, radii, elevation
+   (Derived system — the brand PDF covers logo/colour/type/imagery
+   only; these tokens extend it consistently for UI work.)
+   ============================================================ */
+
+:root {
+  /* 4px base spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Corner radii — soft, optimistic curves echoing the sun arcs */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 999px;
+
+  /* Elevation — navy-tinted, soft */
+  --shadow-sm: 0 1px 2px rgba(13, 55, 89, 0.08);
+  --shadow-md: 0 4px 12px rgba(13, 55, 89, 0.10);
+  --shadow-lg: 0 12px 32px rgba(13, 55, 89, 0.14);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --duration-fast: 120ms; /* @kind other */
+  --duration-base: 200ms; /* @kind other */
+}

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/colors.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/typography.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/tokens/base.css">
+<link rel="stylesheet" href="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/styles.css">
+<script src="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/_ds_bundle.js"></script>
+<style>
+html, body { margin: 0; padding: 0; background: var(--navy-25); }
+a { color: #0D3759; }
+a:hover { color: #F66201; }
+</style>
+</helmet>
+<div style="box-sizing: border-box; width: 100%; max-width: 1240px; margin: 0 auto; padding: 56px 32px 96px; font-family: var(--font-body); letter-spacing: var(--tracking-body); color: var(--navy-800); background: var(--navy-25);">
+
+  <img src="assets/sunrise-logo.png" alt="Sunrise Credit Union" style="height: 44px; width: auto; display: block;">
+  <h1 style="margin: 28px 0 0; font-family: var(--font-display); font-size: 48px; font-weight: 800; line-height: 1.05; letter-spacing: var(--tracking-display); color: var(--color-navy);">Career fair prize quiz — kiosk spec</h1>
+  <p style="margin: 16px 0 0; max-width: 760px; font-size: 18px; line-height: 1.55; color: var(--navy-800); text-wrap: pretty;">Portrait floor kiosk, 65″, rendering at 1080 × 1920 CSS px at 2× density. One random question from a pool of twelve, four answers, one prize. Every screen below is the live <a href="Kiosk Screen.dc.html">Kiosk Screen</a> component at 32% scale — open <a href="Kiosk Quiz.dc.html">Kiosk Quiz</a> for the tappable flow.</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">
+    <span style="padding: 8px 16px; border-radius: 999px; background: #FFFFFF; border: 1px solid var(--border-subtle); font-family: var(--font-accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: var(--color-navy);">1080 × 1920 · 9:16</span>
+    <span style="padding: 8px 16px; border-radius: 999px; background: #FFFFFF; border: 1px solid var(--border-subtle); font-family: var(--font-accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: var(--color-navy);">60 px edge margin · 960 px content</span>
+    <span style="padding: 8px 16px; border-radius: 999px; background: #FFFFFF; border: 1px solid var(--border-subtle); font-family: var(--font-accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: var(--color-navy);">Touch only · no hover</span>
+    <span style="padding: 8px 16px; border-radius: 999px; background: #FFFFFF; border: 1px solid var(--border-subtle); font-family: var(--font-accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: var(--color-navy);">Fades · scale · position only</span>
+  </div>
+
+  <h2 style="margin: 64px 0 0; font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: var(--tracking-display); color: var(--color-navy);">Screens</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 40px 32px; margin-top: 28px;">
+
+    <div style="width: 346px;">
+      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
+        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
+          <dc-import name="Kiosk Screen" screen="attract" hint-size="1080px,1920px"></dc-import>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">01 · Attract</div>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Brand gradient field, type-led. Logo and 149 px headline sit at 108–652 px so they clear a crowd. Pulsing navy CTA at 1200–1400 px, 900 px wide so the 1.03 scale peak still clears the 60 px edge margin; whole screen is the tap target.</p>
+    </div>
+
+    <div style="width: 346px;">
+      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
+        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
+          <dc-import name="Kiosk Screen" screen="question" q-index="0" hint-size="1080px,1920px"></dc-import>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">02 · Question — shortest</div>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Q1 “Who owns a credit union?” — one line of 56 px. Four 960 × 140 answers with 24 px gaps fill 880–1512 px, inside the interaction zone.</p>
+    </div>
+
+    <div style="width: 346px;">
+      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
+        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
+          <dc-import name="Kiosk Screen" screen="question" q-index="8" hint-size="1080px,1920px"></dc-import>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">03 · Question — longest text</div>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Q9 debit vs credit — the longest question in the pool wraps to two lines and still ends well above 850 px. Answer text wraps to two lines inside the 140 px button.</p>
+    </div>
+
+    <div style="width: 346px;">
+      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
+        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
+          <dc-import name="Kiosk Screen" screen="question" q-index="11" hint-size="1080px,1920px"></dc-import>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">04 · Question — longest answer</div>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Q12’s 70-character answer is the wrapping worst case: two lines at 40 px fit the fixed 140 px height. Anything longer than this needs a copy edit, not a smaller type size.</p>
+    </div>
+
+    <div style="width: 346px;">
+      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
+        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
+          <dc-import name="Kiosk Screen" screen="question" q-index="8" pressed="2" hint-size="1080px,1920px"></dc-import>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">05 · Answer pressed</div>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Held for 700 ms before the result. The tapped answer inverts to navy and scales to 0.985; the other three go to the disabled treatment so the choice is unmistakable.</p>
+    </div>
+
+    <div style="width: 346px;">
+      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
+        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
+          <dc-import name="Kiosk Screen" screen="win" q-index="0" hint-size="1080px,1920px"></dc-import>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">06 · Winner</div>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Gradient field plus 184 px “You win!” — the only gradient screen with a headline this size, so staff can read the win from 3 m. Check badge, answer card, then Done.</p>
+    </div>
+
+    <div style="width: 346px;">
+      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
+        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
+          <dc-import name="Kiosk Screen" screen="lose" q-index="0" chosen="2" hint-size="1080px,1920px"></dc-import>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">07 · Not quite</div>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Cream field, no gradient and no celebration — legible as “not a win” at distance without reading a word. X on the visitor’s pick, check on the answer, outline Done.</p>
+    </div>
+
+    <div style="width: 346px;">
+      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
+        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
+          <dc-import name="Kiosk Screen" screen="question" q-index="0" overlay="inactivity" countdown="8" hint-size="1080px,1920px"></dc-import>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">08 · Inactivity warning</div>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Fires 20 s into a question. Flat 93% navy scrim — no blur. Countdown ticks 10 → 0, then the kiosk resets. “Keep playing” lands at 1020–1160 px, inside the interaction zone.</p>
+    </div>
+
+    <div style="width: 346px;">
+      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
+        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
+          <dc-import name="Kiosk Screen" screen="question" q-index="0" show-grid="true" hint-size="1080px,1920px"></dc-import>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">09 · Zone overlay</div>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Reach zones mapped to height off the floor. Top 0–850 px (130–195 cm) is display only; 850–1750 px (65–130 cm) holds every touch target; 1750–1920 px stays empty.</p>
+    </div>
+
+  </div>
+
+  <h2 style="margin: 72px 0 0; font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: var(--tracking-display); color: var(--color-navy);">Answer button — states</h2>
+  <p style="margin: 10px 0 0; max-width: 760px; font-size: 16px; line-height: 1.55;">960 × 140 px, 4 px border, 24 px radius, 76 px letter badge, 40 px label. Shown at 50%. Correct and incorrect states are specified for a future inline-reveal variant; today the result is a full screen.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 28px;">
+    <div style="width: 480px; height: 412px; overflow: hidden;">
+      <div style="width: 960px; transform: scale(0.5); transform-origin: top left; display: flex; flex-direction: column; gap: 24px; font-family: var(--font-body);">
+        <div style="display: flex; align-items: center; gap: 28px; width: 960px; height: 140px; padding: 0 40px; box-sizing: border-box; border: 4px solid var(--color-navy); border-radius: 24px; background: var(--color-cream);">
+          <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 999px; background: var(--color-navy); color: #FFFFFF; font-family: var(--font-display); font-size: 38px; font-weight: 700;">A</span>
+          <span style="flex: 1; font-size: 40px; font-weight: 600; color: var(--color-navy);">Default</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 28px; width: 960px; height: 140px; padding: 0 40px; box-sizing: border-box; border: 4px solid var(--color-navy); border-radius: 24px; background: var(--color-navy); transform: scale(0.985);">
+          <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 999px; background: #FFFFFF; color: var(--color-navy); font-family: var(--font-display); font-size: 44px; font-weight: 700;">B</span>
+          <span style="flex: 1; font-size: 40px; font-weight: 700; color: #FFFFFF;">Pressed</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 28px; width: 960px; height: 140px; padding: 0 40px; box-sizing: border-box; border: 4px solid #2E7D4F; border-radius: 24px; background: #E7F1EA;">
+          <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 999px; background: #2E7D4F; color: #FFFFFF;">
+            <x-import component-from-global-scope="SunriseCreditUnionDesignSystem_2a2795.Icon" name="check" size="46" stroke-width="4" color="#FFFFFF" hint-size="46px,46px"></x-import>
+          </span>
+          <span style="flex: 1; font-size: 40px; font-weight: 700; color: var(--color-navy);">Correct</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 28px; width: 960px; height: 140px; padding: 0 40px; box-sizing: border-box; border: 4px solid #C23A2B; border-radius: 24px; background: #F7E7E5;">
+          <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 999px; background: #C23A2B; color: #FFFFFF;">
+            <x-import component-from-global-scope="SunriseCreditUnionDesignSystem_2a2795.Icon" name="x" size="46" stroke-width="4" color="#FFFFFF" hint-size="46px,46px"></x-import>
+          </span>
+          <span style="flex: 1; font-size: 40px; font-weight: 700; color: var(--color-navy);">Incorrect</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 28px; width: 960px; height: 140px; padding: 0 40px; box-sizing: border-box; border: 4px solid var(--navy-200); border-radius: 24px; background: var(--navy-25);">
+          <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 999px; background: var(--navy-200); color: #FFFFFF; font-family: var(--font-display); font-size: 44px; font-weight: 700;">D</span>
+          <span style="flex: 1; font-size: 40px; font-weight: 600; color: var(--navy-500);">Disabled</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 480px;">
+      <div style="width: 480px; height: 414px; overflow: hidden;">
+        <div style="width: 960px; transform: scale(0.5); transform-origin: top left; display: flex; flex-direction: column; gap: 24px; font-family: var(--font-body);">
+          <div style="display: flex; align-items: center; justify-content: center; width: 960px; height: 140px; border-radius: 999px; background: var(--color-navy); color: #FFFFFF; font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display);">Primary · navy</div>
+          <div style="display: flex; align-items: center; justify-content: center; width: 960px; height: 140px; border-radius: 999px; background: #072338; color: #FFFFFF; font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display);">Primary · pressed</div>
+          <div style="display: flex; align-items: center; justify-content: center; width: 960px; height: 140px; border-radius: 999px; background: var(--gradient-brand); color: var(--color-navy); font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display);">Primary · gradient</div>
+          <div style="display: flex; align-items: center; justify-content: center; width: 960px; height: 140px; border: 4px solid var(--color-navy); box-sizing: border-box; border-radius: 999px; color: var(--color-navy); font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display);">Secondary · outline</div>
+          <div style="display: flex; align-items: center; justify-content: center; width: 960px; height: 140px; border-radius: 999px; background: var(--navy-100); color: var(--navy-300); font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display);">Disabled</div>
+        </div>
+      </div>
+      <p style="margin: 14px 0 0; font-size: 15px; line-height: 1.5;">Action buttons: 960 × 140 px pill, 48 px display type. Navy solid for Done on a gradient field, outline for Done on cream, brand gradient reserved for “Keep playing” — the one CTA that interrupts.</p>
+    </div>
+  </div>
+
+  <h2 style="margin: 72px 0 0; font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: var(--tracking-display); color: var(--color-navy);">New tokens added for the kiosk</h2>
+  <p style="margin: 10px 0 0; max-width: 760px; font-size: 16px; line-height: 1.55;">Nothing here introduces a new hue or typeface. These are kiosk-scale sizing tokens plus three derived values the system did not have. Names map 1:1 to CSS custom properties.</p>
+
+  <div style="margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px;">
+
+    <div style="box-sizing: border-box; padding: 28px 32px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange);">New · type scale</div>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 1.4;">
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-text-display</code><span>184px / Bricolage 800</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-text-hero</code><span>128px / Bricolage 800</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-text-modal</code><span>112px / Bricolage 800</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-text-question</code><span>64px / Bricolage 700 / 1.2</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-text-claim</code><span>52px / Inter 700</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-text-cta</code><span>48px / Bricolage 700</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-text-answer</code><span>44px / Inter 600</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-text-body</code><span>36px / Inter 400 / 1.35</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-text-label</code><span>28px / Poppins 800 / 0.1em</span></div>
+      </div>
+      <p style="margin: 18px 0 0; font-size: 14px; line-height: 1.5; color: var(--navy-700);">The system’s scale tops out at <code style="font-family: var(--font-body); font-weight: 700;">--text-5xl</code> (64px), which becomes the kiosk’s <em>smallest</em> heading. Weights stay at 600–800 — no Regular or Medium display type at distance.</p>
+    </div>
+
+    <div style="box-sizing: border-box; padding: 28px 32px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange);">New · touch &amp; layout</div>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 1.4;">
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-canvas</code><span>1080 × 1920px</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-margin-edge</code><span>60px</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-content-w</code><span>960px</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-zone-top-end</code><span>850px</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-zone-touch-end</code><span>1750px</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-h-answer</code><span>140px</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-h-action</code><span>140px</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-h-attract-cta</code><span>200px</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-gap-answer</code><span>24px (= --space-6)</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-border-answer</code><span>4px</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-radius-modal</code><span>32px</span></div>
+      </div>
+      <p style="margin: 18px 0 0; font-size: 14px; line-height: 1.5; color: var(--navy-700);">Answer stack maths: 4 × 140 + 3 × 24 = 632px, sitting in the interaction zone at 880–1512px. Radii reuse <code style="font-family: var(--font-body); font-weight: 700;">--radius-xl</code> (24px) and <code style="font-family: var(--font-body); font-weight: 700;">--radius-pill</code>; only the 32px modal radius is new.</p>
+    </div>
+
+    <div style="box-sizing: border-box; padding: 28px 32px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange);">New · success, error, press</div>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px; font-size: 15px; line-height: 1.4;">
+        <div style="display: flex; align-items: center; gap: 14px;"><span style="flex: none; width: 28px; height: 28px; border-radius: 6px; background: #2E7D4F;"></span><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-correct</code><span style="margin-left: auto;">#2E7D4F = --status-success</span></div>
+        <div style="display: flex; align-items: center; gap: 14px;"><span style="flex: none; width: 28px; height: 28px; border-radius: 6px; background: #E7F1EA; border: 1px solid var(--border-subtle);"></span><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-correct-surface</code><span style="margin-left: auto;">#E7F1EA · new</span></div>
+        <div style="display: flex; align-items: center; gap: 14px;"><span style="flex: none; width: 28px; height: 28px; border-radius: 6px; background: #C23A2B;"></span><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-incorrect</code><span style="margin-left: auto;">#C23A2B = --status-error</span></div>
+        <div style="display: flex; align-items: center; gap: 14px;"><span style="flex: none; width: 28px; height: 28px; border-radius: 6px; background: #F7E7E5; border: 1px solid var(--border-subtle);"></span><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-incorrect-surface</code><span style="margin-left: auto;">#F7E7E5 · new</span></div>
+        <div style="display: flex; align-items: center; gap: 14px;"><span style="flex: none; width: 28px; height: 28px; border-radius: 6px; background: #072338;"></span><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-navy-pressed</code><span style="margin-left: auto;">#072338 · new</span></div>
+        <div style="display: flex; align-items: center; gap: 14px;"><span style="flex: none; width: 28px; height: 28px; border-radius: 6px; background: rgba(13, 55, 89, 0.93);"></span><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">--kiosk-scrim</code><span style="margin-left: auto;">navy 93% · new</span></div>
+      </div>
+      <p style="margin: 18px 0 0; font-size: 14px; line-height: 1.5; color: var(--navy-700);">Right and wrong never rest on colour alone: a check or X glyph, a different word, a different background field, and a different button style all carry the same signal. Contrast: navy on cream 11.4:1, navy on gradient gold 8.1:1, navy on Ignite Orange 5.0:1, white on navy 12.6:1 — all AA or better.</p>
+    </div>
+
+    <div style="box-sizing: border-box; padding: 28px 32px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange);">New · motion</div>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 1.4;">
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskPulse</code><span>scale 1 → 1.03, 1900ms loop</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskHalo</code><span>scale + fade ring, 1900ms loop</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskPop</code><span>0.72 → 1.05 → 1, 420–520ms</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskRise</code><span>translateY 28px + fade, 420ms</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskFall</code><span>confetti, 2.4–3.4s loop, 12 pieces</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskTick</code><span>countdown scale 1.14 → 1, 1000ms</span></div>
+      </div>
+      <p style="margin: 18px 0 0; font-size: 14px; line-height: 1.5; color: var(--navy-700);">Transform and opacity only — nothing that forces layout or paint on Android 9. No blur, no box-shadow animation, no filters. All easing is the system’s <code style="font-family: var(--font-body); font-weight: 700;">--ease-out</code>.</p>
+    </div>
+  </div>
+
+  <h2 style="margin: 72px 0 0; font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: var(--tracking-display); color: var(--color-navy);">New components</h2>
+  <div style="margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px;">
+    <div style="box-sizing: border-box; padding: 24px 28px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">KioskScreen</div>
+      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">1080 × 1920 shell with the three reach zones. Props: <code style="font-family: var(--font-body); font-weight: 700;">screen</code>, <code style="font-family: var(--font-body); font-weight: 700;">qIndex</code>, <code style="font-family: var(--font-body); font-weight: 700;">pressed</code>, <code style="font-family: var(--font-body); font-weight: 700;">chosen</code>, <code style="font-family: var(--font-body); font-weight: 700;">overlay</code>, <code style="font-family: var(--font-body); font-weight: 700;">countdown</code>, <code style="font-family: var(--font-body); font-weight: 700;">showGrid</code> + four callbacks. Fully presentational; the host owns timers.</p>
+    </div>
+    <div style="box-sizing: border-box; padding: 24px 28px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">AnswerButton</div>
+      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">Letter badge + wrapping label. <code style="font-family: var(--font-body); font-weight: 700;">state</code>: default · pressed · correct · incorrect · disabled. Fixed 160px height so the stack never reflows between questions.</p>
+    </div>
+    <div style="box-sizing: border-box; padding: 24px 28px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">TouchButton</div>
+      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">140–200px pill. <code style="font-family: var(--font-body); font-weight: 700;">variant</code>: navy · outline · gradient. Extends the system Button with kiosk heights and press-only feedback; hover styles removed.</p>
+    </div>
+    <div style="box-sizing: border-box; padding: 24px 28px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">ResultBadge</div>
+      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">92px pill with a Lucide check or X at stroke-width 4 plus a 40px word. Filled white on the win field, white with a 4px error-red border on the not-quite field.</p>
+    </div>
+    <div style="box-sizing: border-box; padding: 24px 28px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">AnswerCard</div>
+      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">White card: 28px eyebrow, 44–48px answer, 36px explanation. Gets a 16px green left rule on the not-quite screen where the answer needs extra emphasis.</p>
+    </div>
+    <div style="box-sizing: border-box; padding: 24px 28px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
+      <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">InactivityModal &amp; ConfettiLayer</div>
+      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">Modal: flat scrim, 32px-radius card, 168px countdown ring, gradient CTA. Confetti: 12 absolutely positioned rects and circles in navy, white and cream on one <code style="font-family: var(--font-body); font-weight: 700;">kioskFall</code> keyframe.</p>
+    </div>
+  </div>
+
+  <h2 style="margin: 72px 0 0; font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: var(--tracking-display); color: var(--color-navy);">Build notes</h2>
+  <ul style="margin: 20px 0 0; padding-left: 26px; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 1.55; max-width: 860px;">
+    <li>Answer order is shuffled per question index, so the correct answer is not always A. The pool ships with the correct answer first; the shuffle table lives in the component.</li>
+    <li>Logos in the design system are transparent PNG only — <strong>request or trace SVG masters</strong> before build. The full-colour logo is used on every kiosk screen, gradient and white alike; the white reverse is available for navy fields.</li>
+    <li>Icons are Lucide <code style="font-family: var(--font-body); font-weight: 700;">check</code> and <code style="font-family: var(--font-body); font-weight: 700;">x</code> via the system Icon wrapper, which fetches from a CDN. <strong>Bundle them locally</strong> — a booth on conference wifi cannot depend on a CDN.</li>
+    <li>Timings: 700ms pressed hold before the result, 20s of question inactivity before the warning, 10s countdown, 60s auto-reset on a result screen if nobody taps Done.</li>
+    <li>Whole-screen tap on attract, single taps only everywhere else. Set <code style="font-family: var(--font-body); font-weight: 700;">touch-action: manipulation</code> and <code style="font-family: var(--font-body); font-weight: 700;">-webkit-tap-highlight-color: transparent</code>, and disable text selection and pull-to-refresh in the kiosk browser.</li>
+    <li>Ship a kiosk reset on page visibility change so a backgrounded browser always returns to attract.</li>
+  </ul>
+</div>
+
+</x-dc>
+</body>
+</html>
