@@ -48,20 +48,20 @@ html, body { margin: 0; padding: 0; background: #ECEFF2; overflow: hidden; }
 
     <sc-if value="{{ isSliding }}">
       <div style="position: absolute; inset: 0; z-index: {{ outZ }}; pointer-events: none; will-change: transform, opacity; animation: {{ outAnim }};">
-        <dc-import name="Kiosk Screen" screen="{{ prevScreen }}" q-index="{{ prevQIndex }}" pressed="{{ prevPressed }}" chosen="{{ prevChosen }}" overlay="{{ prevOverlay }}" countdown="{{ prevCountdown }}" show-grid="{{ showGrid }}" hint-size="1080px,1920px"></dc-import>
+        <dc-import name="Kiosk Screen" screen="{{ prevScreen }}" q-index="{{ prevQIndex }}" pressed="{{ prevPressed }}" chosen="{{ prevChosen }}" show-grid="{{ showGrid }}" hint-size="1080px,1920px"></dc-import>
       </div>
     </sc-if>
 
     <div style="position: absolute; inset: 0; z-index: {{ inZ }}; pointer-events: {{ livePointer }}; will-change: transform, opacity; animation: {{ inAnim }};">
-      <dc-import name="Kiosk Screen" screen="{{ screen }}" q-index="{{ qIndex }}" pressed="{{ pressed }}" chosen="{{ chosen }}" overlay="{{ overlay }}" countdown="{{ countdown }}" show-grid="{{ showGrid }}" on-start="{{ onStart }}" on-answer="{{ onAnswer }}" on-done="{{ onDone }}" on-keep="{{ onKeep }}" hint-size="1080px,1920px"></dc-import>
+      <dc-import name="Kiosk Screen" screen="{{ screen }}" q-index="{{ qIndex }}" pressed="{{ pressed }}" chosen="{{ chosen }}" show-grid="{{ showGrid }}" on-start="{{ onStart }}" on-answer="{{ onAnswer }}" on-done="{{ onDone }}" hint-size="1080px,1920px"></dc-import>
     </div>
   </div>
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;forceScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;attract&quot;,&quot;question&quot;,&quot;question pressed&quot;,&quot;win&quot;,&quot;lose&quot;,&quot;inactivity&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;idleSeconds&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:5,&quot;max&quot;:60,&quot;default&quot;:20,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;resultDelayMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:200,&quot;max&quot;:2000,&quot;step&quot;:100,&quot;default&quot;:700,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;transitionMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:1200,&quot;step&quot;:20,&quot;default&quot;:580,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;transitionDelayMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:600,&quot;step&quot;:20,&quot;default&quot;:100,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;forceScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;attract&quot;,&quot;question&quot;,&quot;question pressed&quot;,&quot;win&quot;,&quot;lose&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;resultDelayMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:200,&quot;max&quot;:2000,&quot;step&quot;:100,&quot;default&quot;:700,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;transitionMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:1200,&quot;step&quot;:20,&quot;default&quot;:580,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;transitionDelayMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:600,&quot;step&quot;:20,&quot;default&quot;:100,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
 class Component extends DCLogic {
-  state = { screen: 'attract', qIndex: 0, pressed: -1, chosen: -1, overlay: 'none', countdown: 10, prev: null, dir: 1 };
+  state = { screen: 'attract', qIndex: 0, pressed: -1, chosen: -1, prev: null, dir: 1 };
   stageRef = React.createRef();
 
   // Where each screen sits in the flow, so a swap can tell whether it is moving
@@ -93,9 +93,8 @@ class Component extends DCLogic {
   }
 
   clearTimers() {
-    [this.idleT, this.resultT, this.autoT, this.overlayT].forEach(t => clearTimeout(t));
-    clearInterval(this.tickT);
-    this.idleT = this.resultT = this.autoT = this.tickT = this.overlayT = null;
+    [this.resultT, this.autoT].forEach(t => clearTimeout(t));
+    this.resultT = this.autoT = null;
   }
 
   slideMs() {
@@ -123,39 +122,20 @@ class Component extends DCLogic {
     clearTimeout(this.slideT);
     this.setState(Object.assign({
       dir,
-      prev: { screen: s.screen, qIndex: s.qIndex, pressed: s.pressed, chosen: s.chosen, overlay: s.overlay, countdown: s.countdown }
+      prev: { screen: s.screen, qIndex: s.qIndex, pressed: s.pressed, chosen: s.chosen }
     }, next));
     // Small buffer so the snapshot is never unmounted mid-animation.
     this.slideT = setTimeout(() => this.setState({ prev: null }), lead + ms + 40);
   }
 
-  armIdle() {
-    clearTimeout(this.idleT);
-    const secs = Math.max(3, Number(this.props.idleSeconds) || 20);
-    this.idleT = setTimeout(() => this.showIdle(), secs * 1000);
-  }
-
-  showIdle() {
-    clearTimeout(this.overlayT);
-    this.setState({ overlay: 'inactivity', countdown: 10 });
-    clearInterval(this.tickT);
-    this.tickT = setInterval(() => {
-      this.setState(s => {
-        if (s.countdown <= 1) { this.reset(); return { countdown: 0 }; }
-        return { countdown: s.countdown - 1 };
-      });
-    }, 1000);
-  }
-
   reset = () => {
     this.clearTimers();
-    this.goTo({ screen: 'attract', pressed: -1, chosen: -1, overlay: 'none', countdown: 10 });
+    this.goTo({ screen: 'attract', pressed: -1, chosen: -1 });
   };
 
   onStart = () => {
     this.clearTimers();
-    this.goTo({ screen: 'question', qIndex: Math.floor(Math.random() * 12), pressed: -1, chosen: -1, overlay: 'none' });
-    this.armIdle();
+    this.goTo({ screen: 'question', qIndex: Math.floor(Math.random() * 12), pressed: -1, chosen: -1 });
   };
 
   onAnswer = (i, isCorrect) => {
@@ -171,30 +151,18 @@ class Component extends DCLogic {
     }, delay);
   };
 
-  // The overlay is not a screen swap, so it gets its own fade out before the
-  // question underneath becomes live again.
-  onKeep = () => {
-    clearInterval(this.tickT);
-    clearTimeout(this.overlayT);
-    this.setState({ overlay: 'leaving' });
-    this.overlayT = setTimeout(() => this.setState({ overlay: 'none', countdown: 10 }), 300);
-    this.armIdle();
-  };
-
   renderVals() {
     const force = this.props.forceScreen || 'auto';
     const s = this.state;
-    let screen = s.screen, pressed = s.pressed, chosen = s.chosen, overlay = s.overlay, countdown = s.countdown;
+    let screen = s.screen, pressed = s.pressed, chosen = s.chosen;
     let prev = s.prev;
     if (force !== 'auto') {
       prev = null;
-      overlay = 'none';
       if (force === 'attract') { screen = 'attract'; pressed = -1; }
       else if (force === 'question') { screen = 'question'; pressed = -1; }
       else if (force === 'question pressed') { screen = 'question'; pressed = 2; }
       else if (force === 'win') { screen = 'win'; chosen = -1; }
       else if (force === 'lose') { screen = 'lose'; chosen = -1; }
-      else if (force === 'inactivity') { screen = 'question'; pressed = -1; overlay = 'inactivity'; countdown = 8; }
     }
     const sliding = !!prev;
     const fwd = s.dir >= 0;
@@ -203,7 +171,7 @@ class Component extends DCLogic {
     const ease = ' ' + ms + 'ms var(--ease-kiosk) ' + this.slideDelayMs() + 'ms both';
     return {
       stageRef: this.stageRef,
-      screen, pressed, chosen, overlay, countdown,
+      screen, pressed, chosen,
       qIndex: s.qIndex,
       showGrid: this.props.showGrid === true,
       isSliding: sliding,
@@ -219,12 +187,9 @@ class Component extends DCLogic {
       prevQIndex: prev ? prev.qIndex : 0,
       prevPressed: prev ? prev.pressed : -1,
       prevChosen: prev ? prev.chosen : -1,
-      prevOverlay: prev ? prev.overlay : 'none',
-      prevCountdown: prev ? prev.countdown : 10,
       onStart: this.onStart,
       onAnswer: this.onAnswer,
-      onDone: this.reset,
-      onKeep: this.onKeep
+      onDone: this.reset
     };
   }
 }

@@ -17,19 +17,12 @@
 <script src="_ds/sunrise-credit-union-design-system-2a2795f9-ea7b-4df3-8c04-81830a3252ed/_ds_bundle.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.9.28/+esm"></script>
 <style>
-@keyframes kioskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+@keyframes kioskShake { 0%,58%,100% { transform: translateX(0) rotate(0deg); } 63% { transform: translateX(-9px) rotate(-0.7deg); } 69% { transform: translateX(8px) rotate(0.6deg); } 75% { transform: translateX(-6px) rotate(-0.45deg); } 81% { transform: translateX(4px) rotate(0.3deg); } 88% { transform: translateX(-2px) rotate(-0.15deg); } }
 @keyframes kioskHalo { 0% { transform: scale(1); opacity: 0.55; } 70%,100% { transform: scale(1.06); opacity: 0; } }
 @keyframes kioskPop { 0% { transform: scale(0.72); opacity: 0; } 62% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes kioskRise { 0% { transform: translateY(28px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
 @keyframes kioskFall { 0% { transform: translateY(-260px) rotate(0deg); opacity: 0; } 8% { opacity: 1; } 100% { transform: translateY(1980px) rotate(420deg); opacity: 1; } }
-@keyframes kioskTick { 0% { transform: scale(1.14); } 40%,100% { transform: scale(1); } }
 :root { --ease-kiosk: cubic-bezier(0.76, 0, 0.24, 1); }
-@keyframes kioskScrimIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-@keyframes kioskScrimOut { 0% { opacity: 1; } 100% { opacity: 0; } }
-@keyframes kioskCardOut { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(0.94); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) {
-  @keyframes kioskCardOut { 0% { opacity: 1; } 100% { opacity: 0; } }
-}
 </style>
 </helmet>
 <div style="width: 1080px; height: 1920px; position: relative; overflow: hidden; background: #FFFFFF; font-family: var(--font-body); letter-spacing: var(--tracking-body); user-select: none; -webkit-tap-highlight-color: transparent;">
@@ -43,18 +36,19 @@
       <div style="position: absolute; top: 1118px; left: 60px; width: 960px; text-align: center; font-size: 42px; font-weight: 600; color: var(--color-navy);">Answer correctly and win a prize!</div>
       <div style="position: absolute; top: 1200px; left: 90px; width: 900px; height: 200px;">
         <div style="position: absolute; inset: 0; border-radius: 999px; background: var(--color-navy); animation: kioskHalo 1900ms var(--ease-out) infinite;"></div>
-        <button style="position: absolute; inset: 0; width: 100%; height: 100%; border: none; border-radius: 999px; background: var(--color-navy); color: #FFFFFF; font-family: var(--font-display); font-size: 64px; font-weight: 700; letter-spacing: var(--tracking-display); animation: kioskPulse 1900ms var(--ease-out) infinite; cursor: pointer;" style-active="background: #072338; animation: none;">Tap to play</button>
+        <button style="position: absolute; inset: 0; width: 100%; height: 100%; border: none; border-radius: 999px; background: var(--color-navy); color: #FFFFFF; font-family: var(--font-display); font-size: 64px; font-weight: 700; letter-spacing: var(--tracking-display); animation: kioskShake 1900ms linear infinite; cursor: pointer;" style-active="background: #072338; animation: none;">Tap to play</button>
       </div>
     </div>
   </sc-if>
 
   <sc-if value="{{ isQuestion }}">
     <div style="position: absolute; inset: 0; background: var(--surface-page);"></div>
-    <img src="assets/sunrise-logo.png" alt="Sunrise Credit Union" style="position: absolute; top: 80px; left: 60px; height: 76px; width: auto; display: block;">
-    <div style="position: absolute; top: 104px; right: 60px; white-space: nowrap; font-family: var(--font-accent); font-size: 28px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-700);">Credit union quiz</div>
-    <div style="position: absolute; top: 200px; left: 60px; width: 960px; height: 10px; border-radius: 999px; background: var(--gradient-brand);"></div>
-    <div style="position: absolute; top: 250px; left: 60px; width: 960px; height: 480px; display: flex; align-items: center;">
-      <h2 style="width: 960px; margin: 0; font-family: var(--font-display); font-size: 56px; font-weight: 700; line-height: 1.18; letter-spacing: var(--tracking-display); color: var(--color-navy); text-wrap: pretty;">{{ question }}</h2>
+    <div style="position: absolute; top: 80px; left: 60px; width: 960px; height: 650px; display: flex; flex-direction: column; align-items: center;">
+      <img src="assets/sunrise-logo.png" alt="Sunrise Credit Union" style="flex: none; height: 200px; width: auto; display: block;">
+      <div style="flex: none; margin-top: 44px; width: 960px; height: 10px; border-radius: 999px; background: var(--gradient-brand);"></div>
+      <div style="flex: 1; min-height: 0; margin-top: 40px; width: 960px; display: flex; align-items: center;">
+        <h2 style="width: 960px; margin: 0; font-family: var(--font-display); font-size: 56px; font-weight: 700; line-height: 1.18; letter-spacing: var(--tracking-display); color: var(--color-navy); text-wrap: pretty;">{{ question }}</h2>
+      </div>
     </div>
     <div style="position: absolute; top: 790px; left: 60px; width: 960px; text-align: center; font-size: 26px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy-700);">Tap your answer</div>
     <div style="position: absolute; top: 880px; left: 60px; width: 960px; display: flex; flex-direction: column; gap: 24px;">
@@ -144,23 +138,10 @@
       <div style="position: absolute; top: 1830px; left: 76px; font-family: var(--font-accent); font-size: 30px; font-weight: 800; color: #FFFFFF;">BOTTOM ZONE 1750–1920 · keep empty</div>
     </div>
   </sc-if>
-
-  <sc-if value="{{ showOverlay }}">
-    <div style="position: absolute; inset: 0; background: rgba(13, 55, 89, 0.93); animation: {{ scrimAnim }};">
-      <div style="position: absolute; top: 500px; left: 60px; width: 960px; box-sizing: border-box; padding: 64px; border-radius: 32px; background: #FFFFFF; animation: {{ cardAnim }};">
-        <h2 style="margin: 0; font-family: var(--font-display); font-size: 112px; font-weight: 800; line-height: 1; letter-spacing: var(--tracking-display); color: var(--color-navy);">Still there?</h2>
-        <div style="margin-top: 40px; display: flex; align-items: center; gap: 32px;">
-          <div style="flex: none; display: flex; align-items: center; justify-content: center; width: 168px; height: 168px; border-radius: 999px; background: var(--color-cream); border: 6px solid var(--color-orange); font-family: var(--font-display); font-size: 96px; font-weight: 800; color: var(--color-navy); animation: kioskTick 1000ms var(--ease-out) infinite;">{{ countdown }}</div>
-          <div style="flex: 1; min-width: 0; font-size: 36px; font-weight: 500; line-height: 1.3; color: var(--navy-800); text-wrap: pretty;">Starting over for the next person in {{ countdown }} seconds.</div>
-        </div>
-        <button onClick="{{ onKeep }}" style="margin-top: 48px; width: 832px; height: 140px; border: none; border-radius: 999px; background: var(--gradient-brand); color: var(--color-navy); font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display); cursor: pointer;" style-active="background: var(--accent-strong); color: #FFFFFF;">Keep playing</button>
-      </div>
-    </div>
-  </sc-if>
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1080,&quot;height&quot;:1920},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;attract&quot;,&quot;question&quot;,&quot;win&quot;,&quot;lose&quot;],&quot;default&quot;:&quot;attract&quot;,&quot;tsType&quot;:&quot;'attract'|'question'|'win'|'lose'&quot;,&quot;section&quot;:&quot;State&quot;},&quot;qIndex&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:11,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;pressed&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;default&quot;:-1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;chosen&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;default&quot;:-1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;overlay&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;none&quot;,&quot;inactivity&quot;],&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;'none'|'inactivity'&quot;,&quot;section&quot;:&quot;State&quot;},&quot;countdown&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:30,&quot;default&quot;:8,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Spec&quot;},&quot;onStart&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onAnswer&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(index: number) =&gt; void&quot;},&quot;onDone&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onKeep&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1080,&quot;height&quot;:1920},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;attract&quot;,&quot;question&quot;,&quot;win&quot;,&quot;lose&quot;],&quot;default&quot;:&quot;attract&quot;,&quot;tsType&quot;:&quot;'attract'|'question'|'win'|'lose'&quot;,&quot;section&quot;:&quot;State&quot;},&quot;qIndex&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:11,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;pressed&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;default&quot;:-1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;chosen&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;default&quot;:-1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Spec&quot;},&quot;onStart&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onAnswer&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(index: number) =&gt; void&quot;},&quot;onDone&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
 class Component extends DCLogic {
   pool = [
     { q: 'Who owns a credit union?', a: ['Its members', 'Outside shareholders', 'The federal government', 'The Bank of Canada'], c: 0, why: 'Every member is a part owner of the credit union.' },
@@ -196,7 +177,6 @@ class Component extends DCLogic {
     const pressed = p.pressed === undefined || p.pressed === null ? -1 : Number(p.pressed);
     const chosen = p.chosen === undefined || p.chosen === null ? -1 : Number(p.chosen);
     const noop = () => {};
-    const overlayLeaving = p.overlay === 'leaving';
     const answers = item.a.map((text, i) => ({
       text,
       letter: 'ABCD'[i],
@@ -210,19 +190,14 @@ class Component extends DCLogic {
       isQuestion: screen === 'question',
       isWin: screen === 'win',
       isLose: screen === 'lose',
-      showOverlay: p.overlay === 'inactivity' || overlayLeaving,
-      scrimAnim: overlayLeaving ? 'kioskScrimOut 260ms var(--ease-kiosk) both' : 'kioskScrimIn 300ms var(--ease-kiosk) both',
-      cardAnim: overlayLeaving ? 'kioskCardOut 240ms var(--ease-out) both' : 'kioskPop 300ms var(--ease-out) both',
       showGrid: p.showGrid === true || p.showGrid === 'true',
       question: item.q,
       why: item.why,
       correctText: item.a[item.c],
       chosenText: chosen >= 0 ? item.a[chosen] : item.a[(item.c + 1) % 4],
       answers,
-      countdown: p.countdown === undefined || p.countdown === null ? 8 : Number(p.countdown),
       onStart: p.onStart || noop,
-      onDone: p.onDone || noop,
-      onKeep: p.onKeep || noop
+      onDone: p.onDone || noop
     };
   }
 }

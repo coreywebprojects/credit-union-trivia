@@ -110,20 +110,10 @@ a:hover { color: #F66201; }
     <div style="width: 346px;">
       <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
         <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
-          <dc-import name="Kiosk Screen" screen="question" q-index="0" overlay="inactivity" countdown="8" hint-size="1080px,1920px"></dc-import>
-        </div>
-      </div>
-      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">08 · Inactivity warning</div>
-      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Fires 20 s into a question. Flat 93% navy scrim — no blur. Countdown ticks 10 → 0, then the kiosk resets. “Keep playing” lands at 1020–1160 px, inside the interaction zone.</p>
-    </div>
-
-    <div style="width: 346px;">
-      <div style="width: 346px; height: 615px; overflow: hidden; border-radius: 14px; border: 1px solid var(--border-strong); background: #FFFFFF;">
-        <div style="width: 1080px; height: 1920px; transform: scale(0.32); transform-origin: top left;">
           <dc-import name="Kiosk Screen" screen="question" q-index="0" show-grid="true" hint-size="1080px,1920px"></dc-import>
         </div>
       </div>
-      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">09 · Zone overlay</div>
+      <div style="margin-top: 14px; font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-700);">08 · Zone overlay</div>
       <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--navy-800); text-wrap: pretty;">Reach zones mapped to height off the floor. Top 0–850 px (130–195 cm) is display only; 850–1750 px (65–130 cm) holds every touch target; 1750–1920 px stays empty.</p>
     </div>
 
@@ -171,7 +161,7 @@ a:hover { color: #F66201; }
           <div style="display: flex; align-items: center; justify-content: center; width: 960px; height: 140px; border-radius: 999px; background: var(--navy-100); color: var(--navy-300); font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: var(--tracking-display);">Disabled</div>
         </div>
       </div>
-      <p style="margin: 14px 0 0; font-size: 15px; line-height: 1.5;">Action buttons: 960 × 140 px pill, 48 px display type. Navy solid for Done on a gradient field, outline for Done on cream, brand gradient reserved for “Keep playing” — the one CTA that interrupts.</p>
+      <p style="margin: 14px 0 0; font-size: 15px; line-height: 1.5;">Action buttons: 960 × 140 px pill, 48 px display type. Navy solid for Done on a gradient field, outline for Done on cream.</p>
     </div>
   </div>
 
@@ -230,12 +220,11 @@ a:hover { color: #F66201; }
     <div style="box-sizing: border-box; padding: 28px 32px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
       <div style="font-family: var(--font-accent); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange);">New · motion</div>
       <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 1.4;">
-        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskPulse</code><span>scale 1 → 1.03, 1900ms loop</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskShake</code><span>shake ±9px / ±0.7°, 1900ms loop</span></div>
         <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskHalo</code><span>scale + fade ring, 1900ms loop</span></div>
         <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskPop</code><span>0.72 → 1.05 → 1, 420–520ms</span></div>
         <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskRise</code><span>translateY 28px + fade, 420ms</span></div>
         <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskFall</code><span>confetti, 2.4–3.4s loop, 12 pieces</span></div>
-        <div style="display: flex; justify-content: space-between; gap: 16px;"><code style="font-family: var(--font-body); font-weight: 700; color: var(--color-navy);">kioskTick</code><span>countdown scale 1.14 → 1, 1000ms</span></div>
       </div>
       <p style="margin: 18px 0 0; font-size: 14px; line-height: 1.5; color: var(--navy-700);">Transform and opacity only — nothing that forces layout or paint on Android 9. No blur, no box-shadow animation, no filters. All easing is the system’s <code style="font-family: var(--font-body); font-weight: 700;">--ease-out</code>.</p>
     </div>
@@ -245,7 +234,7 @@ a:hover { color: #F66201; }
   <div style="margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px;">
     <div style="box-sizing: border-box; padding: 24px 28px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
       <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">KioskScreen</div>
-      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">1080 × 1920 shell with the three reach zones. Props: <code style="font-family: var(--font-body); font-weight: 700;">screen</code>, <code style="font-family: var(--font-body); font-weight: 700;">qIndex</code>, <code style="font-family: var(--font-body); font-weight: 700;">pressed</code>, <code style="font-family: var(--font-body); font-weight: 700;">chosen</code>, <code style="font-family: var(--font-body); font-weight: 700;">overlay</code>, <code style="font-family: var(--font-body); font-weight: 700;">countdown</code>, <code style="font-family: var(--font-body); font-weight: 700;">showGrid</code> + four callbacks. Fully presentational; the host owns timers.</p>
+      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">1080 × 1920 shell with the three reach zones. Props: <code style="font-family: var(--font-body); font-weight: 700;">screen</code>, <code style="font-family: var(--font-body); font-weight: 700;">qIndex</code>, <code style="font-family: var(--font-body); font-weight: 700;">pressed</code>, <code style="font-family: var(--font-body); font-weight: 700;">chosen</code>, <code style="font-family: var(--font-body); font-weight: 700;">showGrid</code> + three callbacks. Fully presentational; the host owns timers.</p>
     </div>
     <div style="box-sizing: border-box; padding: 24px 28px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
       <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">AnswerButton</div>
@@ -264,8 +253,8 @@ a:hover { color: #F66201; }
       <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">White card: 28px eyebrow, 44–48px answer, 36px explanation. Gets a 16px green left rule on the not-quite screen where the answer needs extra emphasis.</p>
     </div>
     <div style="box-sizing: border-box; padding: 24px 28px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;">
-      <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">InactivityModal &amp; ConfettiLayer</div>
-      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">Modal: flat scrim, 32px-radius card, 168px countdown ring, gradient CTA. Confetti: 12 absolutely positioned rects and circles in navy, white and cream on one <code style="font-family: var(--font-body); font-weight: 700;">kioskFall</code> keyframe.</p>
+      <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-navy);">ConfettiLayer</div>
+      <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.5;">Confetti: 12 absolutely positioned rects and circles in navy, white and cream on one <code style="font-family: var(--font-body); font-weight: 700;">kioskFall</code> keyframe.</p>
     </div>
   </div>
 
@@ -274,7 +263,7 @@ a:hover { color: #F66201; }
     <li>Answer order is shuffled per question index, so the correct answer is not always A. The pool ships with the correct answer first; the shuffle table lives in the component.</li>
     <li>Logos in the design system are transparent PNG only — <strong>request or trace SVG masters</strong> before build. The full-colour logo is used on every kiosk screen, gradient and white alike; the white reverse is available for navy fields.</li>
     <li>Icons are Lucide <code style="font-family: var(--font-body); font-weight: 700;">check</code> and <code style="font-family: var(--font-body); font-weight: 700;">x</code> via the system Icon wrapper, which fetches from a CDN. <strong>Bundle them locally</strong> — a booth on conference wifi cannot depend on a CDN.</li>
-    <li>Timings: 700ms pressed hold before the result, 20s of question inactivity before the warning, 10s countdown, 60s auto-reset on a result screen if nobody taps Done.</li>
+    <li>Timings: 700ms pressed hold before the result, 60s auto-reset on a result screen if nobody taps Done.</li>
     <li>Whole-screen tap on attract, single taps only everywhere else. Set <code style="font-family: var(--font-body); font-weight: 700;">touch-action: manipulation</code> and <code style="font-family: var(--font-body); font-weight: 700;">-webkit-tap-highlight-color: transparent</code>, and disable text selection and pull-to-refresh in the kiosk browser.</li>
     <li>Ship a kiosk reset on page visibility change so a backgrounded browser always returns to attract.</li>
   </ul>
