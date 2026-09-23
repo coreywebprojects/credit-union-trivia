@@ -64,6 +64,12 @@ class Component extends DCLogic {
   state = { screen: 'attract', qIndex: 0, pressed: -1, chosen: -1, prev: null, dir: 1 };
   stageRef = React.createRef();
 
+  // Questions are dealt from a shuffled deck rather than picked at random, so
+  // consecutive visitors never get the same question and all 12 are seen
+  // before any of them comes round again.
+  deck = [];
+  lastQIndex = -1;
+
   // Where each screen sits in the flow, so a swap can tell whether it is moving
   // forward (slide in from the right) or backing out to the start.
   rank = { attract: 0, question: 1, win: 2, lose: 2 };
@@ -112,13 +118,16 @@ class Component extends DCLogic {
 
   // Swap screens with a slide. The outgoing screen stays mounted from a frozen
   // snapshot of the state it was last rendered with, so it can animate away
-  // while the incoming screen moves in over (or out from under) it.
-  goTo(next) {
+  // while the incoming screen moves in over (or out from under) it. An
+  // explicit forceDir skips the rank lookup, for transitions (like result ->
+  // next question) that are a step forward even though the rank table alone
+  // would read as backward.
+  goTo(next, forceDir) {
     const s = this.state;
     const ms = this.slideMs();
     const lead = this.slideDelayMs();
     if (ms <= 0) { this.setState(Object.assign({ prev: null }, next)); return; }
-    const dir = (this.rank[next.screen] || 0) >= (this.rank[s.screen] || 0) ? 1 : -1;
+    const dir = forceDir !== undefined ? forceDir : ((this.rank[next.screen] || 0) >= (this.rank[s.screen] || 0) ? 1 : -1);
     clearTimeout(this.slideT);
     this.setState(Object.assign({
       dir,
@@ -133,9 +142,35 @@ class Component extends DCLogic {
     this.goTo({ screen: 'attract', pressed: -1, chosen: -1 });
   };
 
+  // Refill with a fresh shuffle of all 12 questions. If the first card would
+  // repeat the question the previous visitor just answered, swap it with
+  // another so the seam between decks is not noticeable.
+  refillDeck() {
+    const d = [];
+    for (let i = 0; i < 12; i++) d.push(i);
+    for (let i = d.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const t = d[i]; d[i] = d[j]; d[j] = t;
+    }
+    if (d[d.length - 1] === this.lastQIndex) {
+      const t = d[d.length - 1]; d[d.length - 1] = d[0]; d[0] = t;
+    }
+    this.deck = d;
+  }
+
+  // Deal the next question. Cards are taken off the end so the deck is a
+  // simple pop, and a spent deck is reshuffled on the next draw.
+  drawQIndex() {
+    if (!this.deck.length) this.refillDeck();
+    const qIndex = this.deck.pop();
+    this.lastQIndex = qIndex;
+    return qIndex;
+  }
+
   onStart = () => {
     this.clearTimers();
-    this.goTo({ screen: 'question', qIndex: Math.floor(Math.random() * 12), pressed: -1, chosen: -1 });
+    const qIndex = this.drawQIndex();
+    this.goTo({ screen: 'question', qIndex, pressed: -1, chosen: -1 });
   };
 
   onAnswer = (i, isCorrect) => {
@@ -149,6 +184,13 @@ class Component extends DCLogic {
       this.goTo({ screen: isCorrect ? 'win' : 'lose' });
       this.autoT = setTimeout(this.reset, 60000);
     }, delay);
+  };
+
+  // Each visitor answers one question, then it's back to attract for the
+  // next person in line.
+  next = () => {
+    this.clearTimers();
+    this.goTo({ screen: 'attract', pressed: -1, chosen: -1 });
   };
 
   renderVals() {
@@ -189,7 +231,7 @@ class Component extends DCLogic {
       prevChosen: prev ? prev.chosen : -1,
       onStart: this.onStart,
       onAnswer: this.onAnswer,
-      onDone: this.reset
+      onDone: this.next
     };
   }
 }
